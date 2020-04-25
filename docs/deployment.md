@@ -1,7 +1,7 @@
 ---
 id: deployment
 title: Deployment
-sidebar_label: Models
+sidebar_label: Models Deployment
 ---
 
 Deploying a application is relatively easy.
