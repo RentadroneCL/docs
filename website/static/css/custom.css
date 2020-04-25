@@ -1,0 +1,49 @@
+/**
+ * Copyright (c) 2017-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+/* your custom css */
+@import url("https://cdn.jsdelivr.net/combine/npm/tailwindcss@1.3.5/dist/base.min.css,npm/tailwindcss@1.3.5/dist/components.min.css,npm/tailwindcss@1.3.5/dist/utilities.min.css");
+@import "../../node_modules/tailwindcss/dist/base.css";
+@import "../../node_modules/tailwindcss//dist/components.css";
+@import "../../node_modules/tailwindcss/dist/utilities.css";
+
+body {
+  color: #4a5568;
+}
+
+p {
+  color: #718096;
+}
+
+a {
+  color: #4299e1;
+}
+
+a:hover {
+    color: #3182ce;
+    text-decoration: underline;
+}
+
+li a {
+  color: #718096;
+}
+
+
+@media only screen and (min-device-width: 360px) and (max-device-width: 736px) {
+}
+
+@media only screen and (min-width: 1024px) {
+}
+
+@media only screen and (max-width: 1023px) {
+}
+
+@media only screen and (min-width: 1400px) {
+}
+
+@media only screen and (min-width: 1500px) {
+}
