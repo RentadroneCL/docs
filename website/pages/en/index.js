@@ -11,7 +11,7 @@ function Welcome(props) {
       <Container className="mainContainer documentContainer postContainer">
         <h1>Photovoltaic Fault Detector </h1>
         <p>
-            This is an initiative started by <a href="https://rentadrone.cl">Rentadrone.cl</a> to establish an inclusive community
+            This is an initiative started by <a href="https://rentadrone.cl" target="_blank">Rentadrone.cl</a> to establish an inclusive community
             of AI researchers for the development and exchange of best practices for AI in thermographic imaging.
         </p>
         <p>
