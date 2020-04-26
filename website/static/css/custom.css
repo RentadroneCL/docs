@@ -6,11 +6,6 @@
  */
 
 /* your custom css */
-@import url("https://cdn.jsdelivr.net/combine/npm/tailwindcss@1.3.5/dist/base.min.css,npm/tailwindcss@1.3.5/dist/components.min.css,npm/tailwindcss@1.3.5/dist/utilities.min.css");
-@import "../../node_modules/tailwindcss/dist/base.css";
-@import "../../node_modules/tailwindcss//dist/components.css";
-@import "../../node_modules/tailwindcss/dist/utilities.css";
-
 body {
   color: #4a5568;
 }
@@ -28,8 +23,16 @@ a:hover {
     text-decoration: underline;
 }
 
-li a {
+header {
   color: #718096;
+}
+
+.headerTitleWithLogo {
+  color: white;
+}
+
+.headerTitleWithLogo:hover {
+  text-decoration: underline;
 }
 
 
