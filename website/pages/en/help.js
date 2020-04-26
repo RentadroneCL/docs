@@ -22,12 +22,12 @@ function Help(props) {
   const supportLinks = [
     {
       content: `Learn more using the [documentation on this site.](${docUrl(
-        'doc1.html',
+        'detection-models.html',
       )})`,
       title: 'Browse Docs',
     },
     {
-      content: 'Ask questions about the documentation and project',
+      content: 'Ask questions about the documentation and project <a href="https://join.slack.com/t/rentadronecl/shared_invite/zt-dvgh8er7-hsv4p_jf75dsgkyGE1dHuw">Join Slack</a>',
       title: 'Join the community',
     },
     {
