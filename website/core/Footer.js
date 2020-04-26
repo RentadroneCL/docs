@@ -66,8 +66,8 @@ class Footer extends React.Component {
           <div>
             <h5>More</h5>
             {/* <a href={`${this.props.config.baseUrl}blog`}>Blog</a> */}
-            <a href="https://github.com/">GitHub</a>
-            <a
+            <a href="https://github.com/RentadroneCL">GitHub</a>
+            {/* <a
               className="github-button"
               href={this.props.config.repoUrl}
               data-icon="octicon-star"
@@ -76,11 +76,11 @@ class Footer extends React.Component {
               data-count-aria-label="# stargazers on GitHub"
               aria-label="Star this project on GitHub">
               Star
-            </a>
+            </a> */}
             {this.props.config.twitterUsername && (
               <div className="social">
                 <a
-                  href={`https://twitter.com/${this.props.config.twitterUsername}`}
+                  href="https://twitter.com/rentadronecl"
                   className="twitter-follow-button">
                   Follow @{this.props.config.twitterUsername}
                 </a>
