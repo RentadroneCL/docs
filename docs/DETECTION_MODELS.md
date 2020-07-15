@@ -1,5 +1,5 @@
 ---
-id: detection-models
+id: detection_models
 title: Detection Models
 sidebar_label: Models
 ---
