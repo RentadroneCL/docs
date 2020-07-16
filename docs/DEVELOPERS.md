@@ -8,18 +8,18 @@ Help improve our software! We welcome contributions from everyone, whether to ad
 
 Any code contributions are welcomed as long as they are discussed in [Github Issues](https://github.com/RentadroneCL/Web-API/issues) with maintainers. Be aware that if you decide to change something and submit a PR on your own, it may not be accepted.
 
-### Contributing
+## Contributing
 
 We use a combination of GitFlow and Forking Workflow.
 
-#### Steps
+### Steps
 
 1. Fork the repository.
 2. Create a branch depending on the issue that you are working on. See branch reference list bellow.
 3. Do your work and commit.
 4. Create a Pull Request to the development branch.
 
-#### Branch reference list
+### Branch reference list
 
 * `feature/{name}` - New functionality or refactoring.
 * `bugfix/{name}` - Fixes existing code.
@@ -28,7 +28,7 @@ We use a combination of GitFlow and Forking Workflow.
 
 Replace `{name}` with the name that best describes what your PR is about.
 
-### Creating an issue
+## Creating an issue
 
 To encourage active collaboration, we strongly encourages pull requests, not just bug reports. "Bug reports" may also be sent in the form of a pull request containing a failing test.
 

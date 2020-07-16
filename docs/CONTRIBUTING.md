@@ -10,7 +10,7 @@ How to become a contributor and submit your own code
 
 We'd love to accept your patches!
 
-### Contributing code
+## Contributing code
 
 If you have improvements to this project, send us your pull requests! For those
 just getting started, Github has a
@@ -34,7 +34,7 @@ decide to start on an issue, leave a comment so that other people know that
 you're working on it. If you want to help out, but not alone, use the issue
 comment thread to coordinate.
 
-### Pull Request Checklist
+## Pull Request Checklist
 
 Before sending your pull requests, make sure you followed this list.
 
