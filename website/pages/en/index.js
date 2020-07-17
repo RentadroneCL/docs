@@ -15,7 +15,7 @@ function Welcome(props) {
   const links = [
     {
       content: `Learn more using the [documentation on this site.](${docUrl(
-        'detection-models.html',
+        'detection_models.html',
       )})`,
       title: 'Browse Docs',
     },

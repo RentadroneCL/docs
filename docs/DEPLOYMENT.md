@@ -1,6 +1,6 @@
 ---
 id: deployment
-title: Deployment
+title: Models Deployment
 sidebar_label: Models Deployment
 ---
 
@@ -24,35 +24,49 @@ You can create production applications with this API implementation right now (a
 
 Python 3.6+
 
-## Installation
+## Quickstart
 
 In the root project execute the following command to install all dependencies project
 
-```
+```bash
 pip install -r requirements.txt
 ```
 
-You will also need an ASGI server, for production such as <a href="http://www.uvicorn.org" class="external-link" target="_blank">Uvicorn</a> or <a href="https://gitlab.com/pgjones/hypercorn" class="external-link" target="_blank">Hypercorn</a>.
+You will also need an ASGI server, for production such as [Uvicorn](http://www.uvicorn.org) or  [Hypercorn](https://gitlab.com/pgjones/hypercorn).
 
 ```bash
 pip install uvicorn
 ```
 
 ## Configuration
+
 ### Configuration Files
+
 All of the configuration files for the API  are stored in the `config` directory. Each option is documented, so feel free to look through the files and get familiar with the options available to you.
 
 ### Application Key
+
 The next thing you should do after installing is set your application key to a random string.
 
 Typically, this string should be 32 characters long. The key can be set in the `.env` environment file. If you have not copied the `.env.example` file to a new file named `.env`, you should do that now. If the application key is not set, your user sessions and other encrypted data will not be secure!
 
 ### Model Configuration
-The model that we are going to deploy is for predicting photovoltaic fault. You can get the data [here](https://github.com/RentadroneCL/model-definition).
+
+The model that we are going to deploy is for predicting photovoltaic fault. You can get the data [here](https://drive.google.com/drive/folders/1LSc9FkAwJrAAT8pAUWz8aax_biFAMMXS?usp=sharing).
+
+|      Model     |  Weights Trained |  Config  |
+|:--------------:|:------------------:|:--------:|
+|   SSD7 Panel   |      [weight](https://drive.google.com/open?id=1qNjfAp9sW1VJh8ewnb3NKuafhZockTqV)      | [config](https://github.com/RentadroneCL/model-definition/blob/master/Result_ssd7_panel/config_7_panel.json) |
+| SSD300 Soiling |      [weight](https://drive.google.com/open?id=1IiOyYW8yPAh4IALbM_ZVqRhLdxV-ZSPw)      | [config](https://github.com/RentadroneCL/model-definition/blob/master/config_300_fault_1.json) |
+|   YOLO3 Panel  |      [weight](https://drive.google.com/open?id=14zgtgDJv3KTvhRC-VOz6sqsGPC_bdrL1)      | [config](https://github.com/RentadroneCL/model-definition/blob/master/config_full_yolo_panel_infer.json) |
+|  YOLO3 Soiling |      [weight](https://drive.google.com/open?id=1YLgkn1wL5xAGOpwd2gzdfsJVGYPzszn-)      | [config](https://github.com/RentadroneCL/model-definition/blob/master/config_full_yolo_fault_1_infer.json) |
+|   YOLO3 Diode  |      [weight](https://drive.google.com/open?id=1VUtrK9JVTbzBw5dX7_dgLTMToFHbAJl1)      | [config](https://github.com/RentadroneCL/model-definition/blob/master/config_full_yolo_fault_4_infer.json) |
+|   YOLO3 Affected Cell    |      [weight](https://drive.google.com/open?id=1ngyCzw7xF0N5oZnF29EIS5LOl1PFkRRM)      | [config](https://github.com/RentadroneCL/model-definition/blob/master/config_full_yolo_fault_2_infer.json) |
 
 We start by loading the data and compiled models into the `storage/model` folder and the configuration files for each model in the `storage/config` folder and saving the names of the features that we want to use in our model.
 
 ### Example model configuration file
+
 ```js
 {
   "model": {
@@ -67,7 +81,7 @@ We start by loading the data and compiled models into the `storage/model` folder
 
 After we have prepared the data and saved all necessary files it is time to start creating the API to serve our model from.
 
-**NOTE:** There are several methods for saving a model, each with its own sets of pros and cons you may change in function of your necesities.
+**NOTE:** There are several methods for saving a model, each with its own sets of pros and cons you may change in function of your necessity.
 
 ### Run it
 
@@ -96,6 +110,7 @@ You already created an API that:
 * If the mimetype does not indicate JSON `application/json` this returns `None`.
 
 ### Example of an input data
+
 ```js
 [
   {
@@ -129,7 +144,8 @@ You already created an API that:
 ]
 ```
 
-### Example of output prediction
+### Viewing Results
+
 ```js
 [
   {
@@ -279,3 +295,44 @@ You already created an API that:
   }
 ]
 ```
+
+## FAQs
+
+### Current version
+
+**Important:** The default version of the API may change in the future. If you're building an application and care about the stability of the API, be sure to fork the master branch.
+
+### Media types
+
+The Media Type is specified in header of request. The most basic media types the API supports are:
+
+```js
+application/json
+```
+
+Neither of these specify a version, so you will always get the current default JSON representation of resources.
+
+For any media type format that is not supported, the Api should return a 406 Not Acceptable status code.
+
+### Troubleshooting
+
+If you're encountering some oddities in the API, here's a list of resolutions to some of the problems you may be experiencing.
+
+* Why am I getting a 404?
+
+The request could not be understood by the server due to malformed syntax. The client should not repeat the request without modifications
+
+* Why am I not seeing all my results?
+
+Most API calls accessing a list of resources (e.g., users, issues, etc.). If you're making requests and receiving an incomplete set of results, a response is specified in an unsupported content type.
+
+* Why am I getting a 500?
+
+Server Mistake - Indicates that something went wrong on the server that prevent the server from fulfilling the request.
+
+### Third-party libraries
+
+* [Flask](https://flask.palletsprojects.com/en/1.1.x/)
+* [TensorFlow](https://www.tensorflow.org/)
+* [NumPy](https://numpy.org/)
+* [pandas](https://pandas.pydata.org/)

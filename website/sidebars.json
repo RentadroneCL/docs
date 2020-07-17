@@ -1,6 +1,9 @@
 {
   "docs": {
-    "Detection Models": ["detection-models"],
-    "Deployment": ["deployment"]
+    "Developers": ["developers"],
+    "Detection Models": ["detection_models"],
+    "Models Deployment": ["deployment"],
+    "Contributing Guidelines": ["contributing"],
+    "Code of Conduct": ["code_of_conduct"]
   }
 }
