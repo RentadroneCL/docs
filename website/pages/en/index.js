@@ -25,10 +25,29 @@ function Welcome(props) {
     }
   ];
 
+  const projects = [
+    {
+      content: 'Based in model detector YOLOv.3, this repository contains four detector model with their weights and the explanation of how to use these models.',
+      title: 'Photovoltaic Fault Detector'
+    },
+    {
+      content: 'Set of Machine Learning Algorithms developed with the aim of determining health states of different types of crops.',
+      title: 'Precision Agriculture'
+    },
+    {
+      content: 'API specification for deploy the detection models, this repository contains a performant, production-ready reference implementation.',
+      title: 'Web-API'
+    },
+    {
+      content: 'Production-ready reference implementation of an administration tool, which gives you easy access to the EXIF meta-data of an image, generate KMZ and more.',
+      title: 'UI'
+    }
+  ];
+
   return (
     <div className="docMainWrapper wrapper">
       <Container className="mainContainer documentContainer postContainer">
-        <h1>Photovoltaic Fault Detector </h1>
+        <h1>Rentadrone Developers</h1>
         <p>
             This is an initiative started by <a href="https://rentadrone.cl" target="_blank">Rentadrone.cl</a> to establish an inclusive community
             of AI researchers for the development and exchange of best practices for AI in thermographic imaging.
@@ -37,6 +56,7 @@ function Welcome(props) {
           A part of our workload is dedicated to open source and side projects.
           You can spot team members in user groups or as conference speakers as well.
         </p>
+        <GridBlock contents={projects} layout="fourColumn" />
         <GridBlock contents={links} layout="twoColumn" />
       </Container>
     </div>
