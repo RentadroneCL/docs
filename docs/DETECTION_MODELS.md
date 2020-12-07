@@ -1,7 +1,7 @@
 ---
 id: detection_models
-title: Detection Models
-sidebar_label: Models
+title: Photovoltaic Fault Detector
+sidebar_label: Photovoltaic Fault Detector
 ---
 
 Deep learning application for fault detection in photovoltaic plants. Trained detection models that point out where the panel faults are by using radiometric thermal infrared pictures, as well as a tutorial on how to use these algorithms in your own thermal photos. It also shows a step by step to train these models with its own database, in order to properly adjust the model to its particularity.
