@@ -1,0 +1,159 @@
+---
+id: precision_agriculture
+title: Precision Agriculture
+sidebar_label: Precision Agriculture
+---
+
+Remote sensing has as one of its objectives, to be able to provide useful information in the shortest possible time for decision-making. Therefore, it is considered a fundamental tool in precision agriculture, since it allows the monitoring of crops throughout the growing season, providing timely information as a diagnostic evaluation. This task must identify the factor that operates in a restrictive manner and decide, in a timely manner, on corrective agronomic intervention.
+
+A promising approach to this is one that integrates data derived from temporal, mosaic, multispectral, and thermal imaging. Both processes allow us to obtain products such as: Thermal maps and Normalized vegetation index maps; These products allow us to identify stress zones which serve as support in agricultural management tasks.
+
+That is why our objective is to develop an Open Source platform, distributed on a GitHub platform that is capable of generating diagnostic tools or early warning of water stress, health status (attack by pests or diseases), phenological status, nutritional deficiencies, productivity. and performance, among others; by capturing the variations in the reflectivity of the plants during the different growth stages, through the processing of images taken with UAV.
+
+## Quickstart
+
+> This installation method corresponds to Debian based systems, you must find the proper libs and requirements based on your distro base that can be different.
+
+### Before You Begin: Python 3.6
+
+If you are installing the GDAL/OGR packages into a virtual environment based on Python 3.6, you may need to install the python3.6-dev package.
+
+```bash
+sudo apt-get install python3.6-dev
+```
+
+### Install GDAL/OGR
+
+install the gdal-bin package (this should automatically grab any necessary dependencies, including at least the relevant libgdal version).
+
+```bash
+sudo apt-get install gdal-bin
+```
+
+To verify the installation, you can run `ogrinfo --version`.
+
+```bash
+ogrinfo --version
+```
+
+### Install GDAL for Python
+
+Before installing the [GDAL Python libraries](https://pypi.org/project/GDAL/), you’ll need to install the GDAL development libraries.
+
+```bash
+sudo apt-get install libgdal-dev libspatialindex-dev
+```
+
+> In order to avoid errors of missing requirement when you try to install with pip package-management system, the [GDAL Python libraries](https://pypi.org/project/GDAL/) version must coincide with the system installed version.
+
+## Multispectral bands
+
+**Table Nº 1:** Multispectral band wavelengths available.
+
+| Band | Wavelength |
+| -- | -- |
+Blue | 450 nm
+Green | 560 nm
+Red | 650 nm
+Red Edge | 730 nm
+Near infrared | 840 nm
+
+## Vegetation index calculations
+
+The following spectral index can be generated from these lengths (Table Nº 2).
+
+**Table Nº2:** Spectral index generated from the available wavelengths of camera on board UAV.
+
+| Índex | Equation |
+| -- | -- |
+Normalised Difference Index | NDVI = ( Rnir- Rr)/(Rnir+Rr)
+Green Normalized Difference Vegetation Index | GNDVI = (Rnir - Rgreen)/(Rnir + Rgreen)
+Normalised Difference Red Edge | NDRE = (Rnir - Red edge)/ (Red edge + NIR)
+Leaf Chlorophyll Index | LCI = (Rnir - Red edge)/(Rnir + Red)
+Optimized Soil Adjusted Vegetation Index | OSAVI = (Nir-Red)/(Nir+Red+0.16)
+Enhanced Vegetation Index | EVI = 2.5( Rn- Rr)/ (Rn+ 6*Rr)-(7.5*Rb + 1)*
+Leaf area index | LAI = (3.618 x EVI – 0.118) > 0*
+Normalized Difference Water Index | NDWI = (Rnir - Swir) / (Rnir + Swir)*
+
+## Defining plant health status labels
+
+| | NDVI 1 | NDVI 1 < NDVI 2 |
+| -- | -- |--|
+Rank | Description | Description
+-1 to 0 | Water, Bare Soils | Water, Bare Soils
+0 to 0,15 | Soils with sparse, sparse vegetation or crops in the initial stage of development (sprouting) | Poor vigor, weak plants
+0,15 to 0,30 | Plants in intermediate stage of development (leaf production) | Bad leaf / flower ratio
+0,30 to 0,45 | Plants in intermediate stage of development (leaf production) | Bad flower / fruit ratio; fruits with low sugar content, lack of color in the fruits, fruits of low caliber
+0,45 to 0,60 | Plants in the adult stage or phase (fruit production) | Bad flower / fruit ratio; fruits with low sugar content, lack of color in the fruits, fruits of low caliber
+0,60 to >0,80 | Plants in the adult stage or stage (Fruit maturity) | Bad flower / fruit ratio; fruits with low sugar content, lack of color in the fruits, fruits of low caliber
+
+## Methodology
+
+To complete the main objective we consider following diagram methodology (Image Nº1). Was proposed, which reflects the process of generating the information necessary for decision- making during the management of a production cycles of a crop in general.
+
+![Process_Diag](/img/Process_Diag.jpg)
+
+
+Several diagrams of sub- processes were also proposed.
+1- To assess the growth status of plants. Image Nº2,  NDVI multi-time series.
+
+
+![Diagrama2](/img/Diagrama2.jpg)
+
+
+## Example of the utility
+
+The geodata underlying the map are generate with [OpenStreetMap (OSM)](https://www.openstreetmap.org/)
+
+![Images](/img/example_pa.png)
+
+## Example of an output data
+
+***GeoTIFF georeferencing information***
+```json
+{
+  "SourceFile": "/tmp/phpdiUnOQ",
+  "ExifTool:ExifToolVersion": 10.8,
+  "System:FileName": "phpdiUnOQ",
+  "System:Directory": "/tmp",
+  "System:FileSize": 81173090,
+  "System:FileModifyDate": "2020:12:07 01:20:48+00:00",
+  "System:FileAccessDate": "2020:12:07 01:20:49+00:00",
+  "System:FileInodeChangeDate": "2020:12:07 01:20:48+00:00",
+  "System:FilePermissions": 600,
+  "File:FileType": "TIFF",
+  "File:FileTypeExtension": "TIF",
+  "File:MIMEType": "image/tiff",
+  "File:ExifByteOrder": "II",
+  "IFD0:ImageWidth": 5931,
+  "IFD0:ImageHeight": 5526,
+  "IFD0:BitsPerSample": 32,
+  "IFD0:Compression": 5,
+  "IFD0:PhotometricInterpretation": 1,
+  "IFD0:SamplesPerPixel": 1,
+  "IFD0:PlanarConfiguration": 1,
+  "IFD0:Predictor": 1,
+  "IFD0:TileWidth": 256,
+  "IFD0:TileLength": 256,
+  "IFD0:TileOffsets": "(Binary data 4585 bytes, use -b option to extract)",
+  "IFD0:TileByteCounts": "(Binary data 3237 bytes, use -b option to extract)",
+  "IFD0:SampleFormat": 3,
+  "IFD0:PixelScale": "5.90674417821901e-07 4.95878410333717e-07 0",
+  "IFD0:ModelTiePoint": "0 0 0 -71.4437256820205 -33.3243854159711 0",
+  "IFD0:GDALNoData": "nan",
+  "GeoTiff:GeoTiffVersion": "1.1.0",
+  "GeoTiff:GTModelType": 2,
+  "GeoTiff:GTRasterType": 1,
+  "GeoTiff:GeographicType": 4326,
+  "GeoTiff:GeogCitation": "WGS 84",
+  "GeoTiff:GeogAngularUnits": 9102,
+  "GeoTiff:GeogSemiMajorAxis": 6378137,
+  "GeoTiff:GeogInvFlattening": 298.257223563,
+  "Composite:ImageSize": "5931x5526",
+  "Composite:Megapixels": 32.774706
+}
+```
+
+***spectral index***
+
+![Images](/img/veg_index.png)

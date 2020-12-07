@@ -1,7 +1,10 @@
 {
   "docs": {
     "Developers": ["developers"],
-    "Detection Models": ["detection_models"],
+    "Detection Models": [
+      "detection_models",
+      "precision_agriculture"
+    ],
     "Models Deployment": ["deployment"],
     "Contributing Guidelines": ["contributing"],
     "Code of Conduct": ["code_of_conduct"]
