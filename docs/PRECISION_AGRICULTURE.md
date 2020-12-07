@@ -110,12 +110,74 @@ Several diagrams of sub- processes were also proposed.
 
 ### Input generation to create multispectral orthomosaics
 
+To generate the input of the Precision Agriculture algorithms of [Rentadrone.cl](https://rentadrone.cl)., Which are orthomosaic of different multispectral bands, the following steps must be carried out in two well-known Open Source softwares. These are [Open Drone Map](https://github.com/OpenDroneMap) and [QGIS](https://github.com/qgis).
+
+#### Steps in Open Drone Map [(using the WebODM interface)](https://docs.webodm.org/#:~:text=WebODM%20is%20a%20free%2C%20user,software%20like%20QGIS%20or%20AutoCAD.):
+
+* Add Project
+  * Set project NAME: “Sector_Name”
+    Description: Spectral Channel (Green)
+    ![Spectral Channel (Green)](/img/spectral_green_channel.png)
+
+    Select Images: to generate the orthomosaic of each channel (Green in this example) it is necessary to select from the dataset only of the images ending in the number corresponding to each channel image. This is number 2 for this example: DJI_0022, DJI_0032, DJI_0032. You can filter using the expression * 2.tif in the corresponding directory window.
+
+* Select Images: to generate the orthomosaic of each channel (Green in this example) it is necessary to select from the dataset only of the images ending in the number corresponding to each channel image. This is number 2 for this example: DJI_0022, DJI_0032, DJI_0032. You can filter using the expression * 2.tif in the corresponding directory window.
+
+  * For UAV DJI P4 Multispectral,  he numeric endings of the files per channel are described below:
+    * DJI_0020.JPG (RGB)
+    * DJI_0021.TIFF (Blue)
+    * DJI_0022.TIFF (Green)
+    * DJI_0023.TIFF (Red)
+    * DJI_0024.TIFF (RedEdge)
+    * DJI_0025TIFF (NIR)
+
+* Then, we select all the filtered images and upload to our project.
+  * In this example we have loaded 172 images to generate the orthophoto that make up the Green channel.
+  ![File explorer](/img/file_explorer.png)
+  > In "Options" we activate `ortophoto-png` and we give it save.
+
+  ![Ortophoto](/img/ortophoto_png.png)
+
+  > Activate `Start Processing` to generate the orthophoto of the Green channel. This process must be repeated for the generation of each spectral channel.
+
+  ![Start processing](/img/start_processing.png)
+
+* Extraction of the file already generated in this case a georeferenced orthophoto.
+  * After completing the process, we display the `1 Task` and download it in `(GeoTiff)`.
+  ![1 Task](/img/1_task.png)
+  The resulting file is named `odm_orthophoto.tiff`, it only remains to rename the file in this case with the termination of the corresponding channel, in this case the image is the Blue channel. `odm_orthophoto_(Project)_blue.tiff` and take it to the location provided for the project.
+  ![Blue Tiff](/img/blue_tiff.png)
+
+### Steps in QGIS:
+
+After generating the RGB orthomosaics and each of the multispectral bands: Red Edge, NIR, Red, Green, Blue, we use [QGIS](https://github.com/qgis) for their correct alignment using the Georeferencer tool, for which we have to identify distinguishable elements in both RGB orthomosaic as in each multispectral orthomosaic located on the contour of our area of interest, (example Image a) for greater precision of this process, marks or targets could be placed on the ground.
+
+* Control point distribution in RGB orthomosaic
+![Control point](/img/control_point.png)
+
+* Control point for multispectral band alignment.
+![Multispectral ban](/img/multispectral_band.png)
+
+After identifying the control points in each image we will use QGIS to align the images using the Georeferencer tool shown below.
+![Gcp qgis](/img/gcp_qgis.png)
+
+Using the Georeferencer we will be able to generate the GCPs in the RGB orthomosaic that we will use as a reference for each multispectral orthomosaic to align it to the RGB.
+
+- step 1. open the RGB orthomosaic from the Georeferencer tool.
+- step 2. identify and create the GCPs in RGB
+- step 3. save the GCPs in .points format from the options window (image c)
+- step 4. Open each multispectral band mosaic from the georeferencer, load the GCPs and adjust to each point separately.
+- step 5. save each orthomosaic.
+
+![Orthomosaic](/img/orthomosaic.png)
+
+Finally, after georeferencing each Orthomosaic, the input data will be ready for the processes of calculation and mapping of vegetation indices using Rentadrone.cl's Precision Agriculture algorithms.
+
 ## example of the utility
 
 The geodata underlying the map are generate with [OpenStreetMap (OSM)](https://www.openstreetmap.org/)
 
 ![Images](/img/example_pa.png)
-
 ## Example of an output data
 
 ***GeoTIFF georeferencing information***
