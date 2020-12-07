@@ -106,8 +106,11 @@ Several diagrams of sub- processes were also proposed.
 
 ![Diagrama2](/img/Diagrama2.jpg)
 
+## Data Preprocessing
 
-## Example of the utility
+### Input generation to create multispectral orthomosaics
+
+## example of the utility
 
 The geodata underlying the map are generate with [OpenStreetMap (OSM)](https://www.openstreetmap.org/)
 
