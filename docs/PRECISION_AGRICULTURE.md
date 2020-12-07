@@ -8,7 +8,9 @@ Remote sensing has as one of its objectives, to be able to provide useful inform
 
 A promising approach to this is one that integrates data derived from temporal, mosaic, multispectral, and thermal imaging. Both processes allow us to obtain products such as: Thermal maps and Normalized vegetation index maps; These products allow us to identify stress zones which serve as support in agricultural management tasks.
 
-That is why our objective is to develop an Open Source platform, distributed on a GitHub platform that is capable of generating diagnostic tools or early warning of water stress, health status (attack by pests or diseases), phenological status, nutritional deficiencies, productivity. and performance, among others; by capturing the variations in the reflectivity of the plants during the different growth stages, through the processing of images taken with UAV.
+That is why our objective is to develop an Open Source platform, distributed on a GitHub platform, that is capable of generating local calculations and mapping (plant by plant) of most important  vegetation indices, through the processing of images taken with UAV.
+
+Key words: Vegetation index, phenological status, agricultural management, Open Source platform.
 
 ## Quickstart
 
@@ -70,10 +72,7 @@ Normalised Difference Index | NDVI = ( Rnir- Rr)/(Rnir+Rr)
 Green Normalized Difference Vegetation Index | GNDVI = (Rnir - Rgreen)/(Rnir + Rgreen)
 Normalised Difference Red Edge | NDRE = (Rnir - Red edge)/ (Red edge + NIR)
 Leaf Chlorophyll Index | LCI = (Rnir - Red edge)/(Rnir + Red)
-Optimized Soil Adjusted Vegetation Index | OSAVI = (Nir-Red)/(Nir+Red+0.16)
-Enhanced Vegetation Index | EVI = 2.5( Rn- Rr)/ (Rn+ 6*Rr)-(7.5*Rb + 1)*
-Leaf area index | LAI = (3.618 x EVI – 0.118) > 0*
-Normalized Difference Water Index | NDWI = (Rnir - Swir) / (Rnir + Swir)*
+Optimized Soil Adjusted Vegetation Index | OSAVI = (Nir-Red)/(Nir+Red+0.16
 
 ## Defining plant health status labels
 
@@ -86,6 +85,13 @@ Rank | Description | Description
 0,30 to 0,45 | Plants in intermediate stage of development (leaf production) | Bad flower / fruit ratio; fruits with low sugar content, lack of color in the fruits, fruits of low caliber
 0,45 to 0,60 | Plants in the adult stage or phase (fruit production) | Bad flower / fruit ratio; fruits with low sugar content, lack of color in the fruits, fruits of low caliber
 0,60 to >0,80 | Plants in the adult stage or stage (Fruit maturity) | Bad flower / fruit ratio; fruits with low sugar content, lack of color in the fruits, fruits of low caliber
+
+## Limitations of this solution
+
+* The multispectral orthomosaics have to be built before using the tool.
+* Charge the RGB bands separately.
+* Must know the format of the bands you will be using and the metadata of each image (tiff, GeoTiff).
+* In this case the methodology and support only will be for Phantom 4 RTK Multispectral user.
 
 ## Methodology
 
